@@ -1,5 +1,5 @@
-/* Import Spotify-style fonts */
-@import url('https://fonts.googleapis.com/css2?family=Circular+Std:wght@300;400;500;700;900&display=swap');
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 /* Global Styles */
 * {
@@ -9,7 +9,7 @@
 }
 
 body {
-  font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   background: #121212;
   min-height: 100vh;
   color: #ffffff;
@@ -64,7 +64,7 @@ body {
   margin-bottom: 10px;
   font-size: 2rem;
   font-weight: 900;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .auth-subtitle {
@@ -92,7 +92,7 @@ body {
   font-weight: 700;
   color: #ffffff;
   font-size: 0.9rem;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .form-group input {
@@ -103,7 +103,7 @@ body {
   transition: all 0.3s ease;
   background: #2a2a2a;
   color: #ffffff;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .form-group input:focus {
@@ -163,7 +163,7 @@ body {
   margin-top: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .auth-button:hover:not(:disabled) {
@@ -205,7 +205,7 @@ body {
   text-align: center;
   font-weight: 500;
   animation: shake 0.5s ease-in-out;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 @keyframes shake {
@@ -288,7 +288,7 @@ body {
   font-size: 2.5rem;
   margin-bottom: 4px;
   font-weight: 900;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
   letter-spacing: -0.5px;
 }
 
@@ -313,7 +313,7 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 0.9rem;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -377,7 +377,7 @@ body {
   align-items: center;
   font-weight: 500;
   border-bottom: 1px solid #b91d2a;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .error-close {
@@ -410,7 +410,7 @@ body {
   margin-bottom: 20px;
   font-size: 1.5rem;
   font-weight: 700;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .stats-grid {
@@ -460,7 +460,7 @@ body {
   font-size: 1.8rem;
   font-weight: 900;
   color: #ffffff;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .stat-label {
@@ -504,7 +504,7 @@ body {
   font-weight: 900;
   font-size: 1.2rem;
   color: #ffffff;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .priority-label {
@@ -554,7 +554,7 @@ body {
   color: #ffffff;
   font-size: 2rem;
   font-weight: 900;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .todo-count {
@@ -585,7 +585,7 @@ body {
   margin-bottom: 16px;
   font-size: 1.8rem;
   font-weight: 700;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .empty-state p {
@@ -606,7 +606,7 @@ body {
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .create-first-todo-btn:hover {
@@ -694,7 +694,7 @@ body {
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 8px;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .todo-description {
@@ -800,7 +800,7 @@ body {
   border-radius: 8px;
   background: #282828;
   color: #ffffff;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .edit-description {
@@ -808,7 +808,7 @@ body {
   border: 2px solid #404040;
   border-radius: 8px;
   resize: vertical;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: #282828;
   color: #ffffff;
   min-height: 80px;
@@ -829,7 +829,7 @@ body {
   font-size: 0.9rem;
   background: #282828;
   color: #ffffff;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .edit-title:focus,
@@ -882,7 +882,7 @@ body {
   margin: 0;
   font-size: 1.8rem;
   font-weight: 900;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .close-btn {
@@ -931,7 +931,7 @@ body {
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .submit-button {
@@ -945,7 +945,7 @@ body {
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .cancel-button:hover {
@@ -999,7 +999,7 @@ body {
   font-weight: 700;
   color: #ffffff;
   font-size: 0.9rem;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .todo-form .form-group input,
@@ -1012,7 +1012,7 @@ body {
   transition: all 0.3s ease;
   background: #282828;
   color: #ffffff;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .todo-form .form-group input:focus,
