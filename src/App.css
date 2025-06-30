@@ -1,0 +1,1165 @@
+/* Import Spotify-style fonts */
+@import url('https://fonts.googleapis.com/css2?family=Circular+Std:wght@300;400;500;700;900&display=swap');
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  background: #121212;
+  min-height: 100vh;
+  color: #ffffff;
+  line-height: 1.6;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+.App {
+  min-height: 100vh;
+  width: 100vw;
+  background: #121212;
+}
+
+/* Authentication Container */
+.auth-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.auth-card {
+  background: #181818;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid #333;
+  animation: slideUp 0.6s ease-out;
+  width: 100%;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-card h2 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 10px;
+  font-size: 2rem;
+  font-weight: 900;
+  font-family: 'Circular Std', sans-serif;
+}
+
+.auth-subtitle {
+  text-align: center;
+  color: #b3b3b3;
+  margin-bottom: 30px;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* Form Styles */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-family: 'Circular Std', sans-serif;
+}
+
+.form-group input {
+  padding: 12px 16px;
+  border: 2px solid #333;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #2a2a2a;
+  color: #ffffff;
+  font-family: 'Circular Std', sans-serif;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #1db954;
+  background: #333;
+  box-shadow: 0 4px 12px rgba(29, 185, 84, 0.2);
+}
+
+.password-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input input {
+  flex: 1;
+  padding-right: 50px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  color: #b3b3b3;
+}
+
+.password-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.password-hint {
+  color: #b3b3b3;
+  font-size: 0.8rem;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* Button Styles */
+.auth-button {
+  padding: 16px 20px;
+  background: #1db954;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Circular Std', sans-serif;
+}
+
+.auth-button:hover:not(:disabled) {
+  background: #1ed760;
+  transform: scale(1.04);
+}
+
+.auth-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.auth-link {
+  text-align: center;
+  margin-top: 20px;
+  color: #b3b3b3;
+}
+
+.auth-link a {
+  color: #1db954;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.auth-link a:hover {
+  color: #1ed760;
+  text-decoration: underline;
+}
+
+/* Error Messages */
+.error-message {
+  background: #e22134;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
+  animation: shake 0.5s ease-in-out;
+  font-family: 'Circular Std', sans-serif;
+}
+
+@keyframes shake {
+
+  0%,
+  20%,
+  40%,
+  60%,
+  80%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+}
+
+
+
+/* Loading Styles - Spotify Style */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: #ffffff;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #333;
+  border-top: 3px solid #1db954;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Todo Dashboard Styles - Full Window Spotify Style */
+.todo-dashboard {
+  min-height: 100vh;
+  width: 100vw;
+  background: #121212;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.dashboard-header {
+  background: linear-gradient(180deg, #1e1e1e 0%, #181818 100%);
+  border-bottom: 1px solid #333;
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.header-left h1 {
+  color: #ffffff;
+  font-size: 2.5rem;
+  margin-bottom: 4px;
+  font-weight: 900;
+  font-family: 'Circular Std', sans-serif;
+  letter-spacing: -0.5px;
+}
+
+.header-left p {
+  color: #b3b3b3;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.header-right {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.create-todo-btn,
+.logout-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-family: 'Circular Std', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.create-todo-btn {
+  background: #1db954;
+  color: #ffffff;
+}
+
+.create-todo-btn:hover {
+  background: #1ed760;
+  transform: scale(1.04);
+}
+
+.logout-btn {
+  background: transparent;
+  color: #b3b3b3;
+  border: 1px solid #535353;
+}
+
+.logout-btn:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: scale(1.04);
+}
+
+/* Dashboard Content Layout - Full Window */
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  min-height: calc(100vh - 100px);
+  background: #121212;
+  flex: 1;
+}
+
+.dashboard-sidebar {
+  background: #181818;
+  border-right: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 24px;
+  overflow-y: auto;
+}
+
+.todo-main {
+  background: #121212;
+  padding: 32px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Error Banner */
+.error-banner {
+  background: #e22134;
+  color: white;
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  border-bottom: 1px solid #b91d2a;
+  font-family: 'Circular Std', sans-serif;
+}
+
+.error-close {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.error-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+
+
+/* Todo Stats - Spotify Style */
+.todo-stats {
+  background: #181818;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid #333;
+}
+
+.stats-header h3 {
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: 'Circular Std', sans-serif;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: #282828;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.3s ease;
+  border: 1px solid #404040;
+}
+
+.stat-card:hover {
+  background: #3e3e3e;
+  transform: translateY(-2px);
+}
+
+.stat-card.total .stat-icon {
+  color: #1db954;
+}
+
+.stat-card.completed .stat-icon {
+  color: #1db954;
+}
+
+.stat-card.pending .stat-icon {
+  color: #ffa726;
+}
+
+.stat-card.progress .stat-icon {
+  color: #9c27b0;
+}
+
+.stat-icon {
+  font-size: 1.5rem;
+}
+
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #ffffff;
+  font-family: 'Circular Std', sans-serif;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #b3b3b3;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+.priority-stats h4 {
+  color: #ffffff;
+  margin-bottom: 16px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.priority-grid {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.priority-item {
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  background: #282828;
+  min-width: 70px;
+  border: 1px solid #404040;
+}
+
+.priority-icon {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.priority-count {
+  display: block;
+  font-weight: 900;
+  font-size: 1.2rem;
+  color: #ffffff;
+  font-family: 'Circular Std', sans-serif;
+}
+
+.priority-label {
+  font-size: 0.7rem;
+  color: #b3b3b3;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.progress-bar-container {
+  margin-top: 20px;
+}
+
+.progress-bar {
+  background: #404040;
+  border-radius: 4px;
+  height: 6px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-fill {
+  background: #1db954;
+  height: 100%;
+  transition: width 0.3s ease;
+  border-radius: 4px;
+}
+
+.progress-text {
+  font-size: 0.8rem;
+  color: #b3b3b3;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Todo List - Spotify Style */
+.todo-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #333;
+}
+
+.todo-list-header h2 {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 900;
+  font-family: 'Circular Std', sans-serif;
+}
+
+.todo-count {
+  background: #1db954;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: #b3b3b3;
+}
+
+.empty-icon {
+  font-size: 5rem;
+  margin-bottom: 24px;
+  opacity: 0.6;
+}
+
+.empty-state h3 {
+  color: #ffffff;
+  margin-bottom: 16px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: 'Circular Std', sans-serif;
+}
+
+.empty-state p {
+  margin-bottom: 32px;
+  font-size: 1.1rem;
+  color: #b3b3b3;
+}
+
+.create-first-todo-btn {
+  padding: 16px 32px;
+  background: #1db954;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Circular Std', sans-serif;
+}
+
+.create-first-todo-btn:hover {
+  background: #1ed760;
+  transform: scale(1.04);
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Todo Item - Spotify Style */
+.todo-item {
+  background: #181818;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.todo-item:hover {
+  background: #1a1a1a;
+  border-color: #535353;
+  transform: translateY(-2px);
+}
+
+.todo-item.completed {
+  background: #0f1419;
+  opacity: 0.7;
+}
+
+.todo-item.completed .todo-title {
+  text-decoration: line-through;
+  color: #535353;
+}
+
+.todo-item.overdue {
+  border-left: 4px solid #e22134;
+}
+
+.todo-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.todo-checkbox input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #1db954;
+}
+
+.todo-priority {
+  color: white;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.todo-category {
+  background: #282828;
+  color: #ffffff;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid #404040;
+}
+
+.todo-content {
+  margin-bottom: 16px;
+}
+
+.todo-title {
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-family: 'Circular Std', sans-serif;
+}
+
+.todo-description {
+  color: #b3b3b3;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.todo-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 0.8rem;
+  color: #535353;
+}
+
+.todo-due-date.overdue {
+  color: #e22134;
+  font-weight: 700;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.edit-btn,
+.delete-btn,
+.save-btn,
+.cancel-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.edit-btn {
+  background: transparent;
+  color: #1db954;
+  border: 1px solid #1db954;
+}
+
+.edit-btn:hover {
+  background: #1db954;
+  color: #ffffff;
+}
+
+.delete-btn {
+  background: transparent;
+  color: #e22134;
+  border: 1px solid #e22134;
+}
+
+.delete-btn:hover {
+  background: #e22134;
+  color: #ffffff;
+}
+
+.save-btn {
+  background: #1db954;
+  color: #ffffff;
+}
+
+.save-btn:hover {
+  background: #1ed760;
+}
+
+.cancel-btn {
+  background: transparent;
+  color: #b3b3b3;
+  border: 1px solid #535353;
+}
+
+.cancel-btn:hover {
+  background: #535353;
+  color: #ffffff;
+}
+
+.edit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Todo Edit Form - Spotify Style */
+.todo-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.edit-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 12px 16px;
+  border: 2px solid #404040;
+  border-radius: 8px;
+  background: #282828;
+  color: #ffffff;
+  font-family: 'Circular Std', sans-serif;
+}
+
+.edit-description {
+  padding: 12px 16px;
+  border: 2px solid #404040;
+  border-radius: 8px;
+  resize: vertical;
+  font-family: 'Circular Std', sans-serif;
+  background: #282828;
+  color: #ffffff;
+  min-height: 80px;
+}
+
+.edit-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+.edit-priority,
+.edit-category,
+.edit-date {
+  padding: 12px 16px;
+  border: 2px solid #404040;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: #282828;
+  color: #ffffff;
+  font-family: 'Circular Std', sans-serif;
+}
+
+.edit-title:focus,
+.edit-description:focus,
+.edit-priority:focus,
+.edit-category:focus,
+.edit-date:focus {
+  outline: none;
+  border-color: #1db954;
+  background: #333;
+}
+
+/* Todo Form Modal - Spotify Style */
+.todo-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.todo-form-container {
+  background: #181818;
+  border-radius: 12px;
+  padding: 0;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease-out;
+  border: 1px solid #333;
+}
+
+.todo-form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  border-bottom: 1px solid #333;
+}
+
+.todo-form-header h2 {
+  color: #ffffff;
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 900;
+  font-family: 'Circular Std', sans-serif;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+  color: #b3b3b3;
+}
+
+.close-btn:hover {
+  background: #282828;
+  color: #ffffff;
+}
+
+.todo-form {
+  padding: 32px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #333;
+}
+
+.cancel-button {
+  padding: 12px 24px;
+  background: transparent;
+  color: #b3b3b3;
+  border: 1px solid #535353;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Circular Std', sans-serif;
+}
+
+.submit-button {
+  padding: 12px 24px;
+  background: #1db954;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Circular Std', sans-serif;
+}
+
+.cancel-button:hover {
+  background: #535353;
+  color: #ffffff;
+}
+
+.submit-button:hover {
+  background: #1ed760;
+  transform: scale(1.04);
+}
+
+.cancel-button:disabled,
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Todo Form Input Styles */
+.todo-form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.todo-form .form-group label {
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-family: 'Circular Std', sans-serif;
+}
+
+.todo-form .form-group input,
+.todo-form .form-group textarea,
+.todo-form .form-group select {
+  padding: 12px 16px;
+  border: 2px solid #404040;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #282828;
+  color: #ffffff;
+  font-family: 'Circular Std', sans-serif;
+}
+
+.todo-form .form-group input:focus,
+.todo-form .form-group textarea:focus,
+.todo-form .form-group select:focus {
+  outline: none;
+  border-color: #1db954;
+  background: #333;
+  box-shadow: 0 4px 12px rgba(29, 185, 84, 0.2);
+}
+
+.todo-form .form-group input::placeholder,
+.todo-form .form-group textarea::placeholder {
+  color: #535353;
+}
+
+.todo-form .form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.todo-form .form-group select {
+  cursor: pointer;
+}
+
+.todo-form .form-group select option {
+  background: #282828;
+  color: #ffffff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .auth-container {
+    padding: 10px;
+  }
+
+  .auth-card {
+    padding: 30px 20px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 2rem;
+  }
+
+  .header-right {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .create-todo-btn,
+  .logout-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .dashboard-content {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .dashboard-sidebar {
+    order: 2;
+    border-right: none;
+    border-top: 1px solid #333;
+    padding: 20px;
+  }
+
+  .todo-main {
+    order: 1;
+    padding: 20px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .edit-row,
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .todo-form-container {
+    width: 95%;
+    margin: 20px;
+  }
+
+  .todo-form {
+    padding: 20px;
+  }
+
+  .todo-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .edit-btn,
+  .delete-btn,
+  .save-btn,
+  .cancel-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 25px 15px;
+  }
+
+  .auth-card h2 {
+    font-size: 1.8rem;
+  }
+
+  .dashboard-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .todo-item {
+    padding: 16px;
+  }
+
+  .todo-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .todo-form-header {
+    padding: 16px 20px;
+  }
+
+  .todo-form {
+    padding: 20px 16px;
+  }
+
+  .dashboard-sidebar {
+    padding: 16px;
+  }
+
+  .todo-main {
+    padding: 16px;
+  }
+}
