@@ -13,7 +13,6 @@ import { protect } from '../middleware/auth.js';
 
 const router = express.Router();
 
-// Validation rules
 const todoValidation = [
     body('title')
         .trim()
@@ -69,10 +68,8 @@ const updateTodoValidation = [
         .withMessage('Due date must be a valid date')
 ];
 
-// Apply authentication middleware to all routes
 router.use(protect);
 
-// Routes
 router.get('/stats', getTodoStats);
 router.get('/', getTodos);
 router.get('/:id', getTodo);

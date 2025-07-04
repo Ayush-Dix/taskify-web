@@ -5,7 +5,6 @@ import { protect } from '../middleware/auth.js';
 
 const router = express.Router();
 
-// Validation rules
 const registerValidation = [
     body('name')
         .trim()
@@ -32,7 +31,6 @@ const loginValidation = [
         .withMessage('Password is required')
 ];
 
-// Routes
 router.post('/register', registerValidation, register);
 router.post('/login', loginValidation, login);
 router.get('/me', protect, getMe);

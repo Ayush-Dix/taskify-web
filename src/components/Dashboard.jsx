@@ -32,7 +32,6 @@ const Dashboard = () => {
 
     return (
         <div className="todo-dashboard">
-            {/* Header */}
             <header className="dashboard-header">
                 <div className="header-left">
                     <h1>📝 Todo Dashboard</h1>
@@ -56,12 +55,10 @@ const Dashboard = () => {
             )}
 
             <div className="dashboard-content">
-                {/* Left Sidebar - Stats */}
                 <aside className="dashboard-sidebar">
                     <TodoStats />
                 </aside>
 
-                {/* Main Content - Todo List */}
                 <main className="todo-main">
                     <div className="todo-list-header">
                         <h2>Your Todos</h2>
@@ -97,7 +94,6 @@ const Dashboard = () => {
                 </main>
             </div>
 
-            {/* Todo Form Modal */}
             {showForm && (
                 <TodoForm onClose={handleCloseForm} />
             )}

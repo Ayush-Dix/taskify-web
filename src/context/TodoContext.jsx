@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import axios from 'axios';
 
-// Initial state
 const initialState = {
     todos: [],
     stats: {
@@ -16,7 +15,6 @@ const initialState = {
     error: null
 };
 
-// Action types
 const TODO_ACTIONS = {
     SET_LOADING: 'SET_LOADING',
     SET_TODOS: 'SET_TODOS',
@@ -28,7 +26,6 @@ const TODO_ACTIONS = {
     CLEAR_ERROR: 'CLEAR_ERROR'
 };
 
-// Reducer function
 const todoReducer = (state, action) => {
     switch (action.type) {
         case TODO_ACTIONS.SET_LOADING:
@@ -88,10 +85,8 @@ const todoReducer = (state, action) => {
     }
 };
 
-// Create context
 const TodoContext = createContext();
 
-// TodoProvider component
 export const TodoProvider = ({ children }) => {
     const [state, dispatch] = useReducer(todoReducer, initialState);
 
@@ -103,7 +98,6 @@ export const TodoProvider = ({ children }) => {
         }
     };
 
-    // Get todo statistics
     const getTodoStats = async () => {
         try {
             const token = localStorage.getItem('token');
@@ -122,7 +116,6 @@ export const TodoProvider = ({ children }) => {
         }
     };
 
-    // Get all todos
     const getTodos = async () => {
         dispatch({ type: TODO_ACTIONS.SET_LOADING, payload: true });
 
@@ -143,7 +136,6 @@ export const TodoProvider = ({ children }) => {
         }
     };
 
-    // Create new todo
     const createTodo = async (todoData) => {
         dispatch({ type: TODO_ACTIONS.SET_LOADING, payload: true });
 
@@ -167,7 +159,6 @@ export const TodoProvider = ({ children }) => {
         }
     };
 
-    // Update todo
     const updateTodo = async (id, todoData) => {
         dispatch({ type: TODO_ACTIONS.SET_LOADING, payload: true });
 
@@ -191,19 +182,16 @@ export const TodoProvider = ({ children }) => {
         }
     };
 
-    // Delete todo
     const deleteTodo = async (id) => {
         try {
             const token = localStorage.getItem('token');
             setAuthToken(token);
 
             await axios.delete(`http://localhost:5000/api/todos/${id}`);
-            // Remove the todo from state immediately
             dispatch({
                 type: TODO_ACTIONS.DELETE_TODO,
                 payload: id
             });
-            // Also refresh stats
             getTodoStats();
             return { success: true };
         } catch (error) {
@@ -215,19 +203,16 @@ export const TodoProvider = ({ children }) => {
         }
     };
 
-    // Toggle todo completion
     const toggleTodo = async (id) => {
         try {
             const token = localStorage.getItem('token');
             setAuthToken(token);
 
             const res = await axios.patch(`http://localhost:5000/api/todos/${id}/toggle`);
-            // Update the todo in state immediately
             dispatch({
                 type: TODO_ACTIONS.UPDATE_TODO,
                 payload: res.data.data
             });
-            // Also refresh stats
             getTodoStats();
             return { success: true };
         } catch (error) {
@@ -239,7 +224,6 @@ export const TodoProvider = ({ children }) => {
         }
     };
 
-    // Clear error
     const clearError = () => {
         dispatch({ type: TODO_ACTIONS.CLEAR_ERROR });
     };
@@ -262,7 +246,6 @@ export const TodoProvider = ({ children }) => {
     );
 };
 
-// Custom hook to use todo context
 export const useTodos = () => {
     const context = useContext(TodoContext);
     if (!context) {

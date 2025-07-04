@@ -2,7 +2,6 @@ import mongoose from 'mongoose';
 
 const connectDB = async () => {
     try {
-        // Set mongoose options for better connection handling
         const options = {
             useNewUrlParser: true,
             useUnifiedTopology: true,
@@ -13,7 +12,6 @@ const connectDB = async () => {
     } catch (error) {
         console.error('❌ Error connecting to MongoDB:', error.message);
 
-        // Don't exit process in development, just log error
         if (process.env.NODE_ENV === 'production') {
             process.exit(1);
         }
